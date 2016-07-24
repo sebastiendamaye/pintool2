@@ -1,12 +1,22 @@
 #!/usr/bin/env python
 #coding: utf8 
 #
-#prog_name= 'pintool.py'
-#prog_version = '0.2'
-#prog_release = '20151028'
-#prog_author = 'Eduardo Garcia Melia'
-#prog_author_mail = 'wagiro@gmail.com'
+#prog_name= 'pintool2.py'
+#prog_version = '2.0'
+#prog_release = '20160724'
+#prog_author = 'Sebastien Damaye'
+#prog_author_mail = 'sebastien.damaye@gmail.com'
 
+"""
+pintool2
+is an improved version of the pintool.py script written by wagiro (Eduardo García),
+available here (https://github.com/wagiro/pintool).
+
+This version integrates an additional reverse order option to brute force password in reverse order (starts from the end).
+
+This tool can be useful for solving some reversing challenges in CTFs events.
+Implements the technique described here (http://shell-storm.org/blog/A-binary-analysis-count-me-if-you-can/). 
+"""
 
 import sys
 import string as s
@@ -24,7 +34,7 @@ INSCOUNT64 = "%s/source/tools/ManualExamples/obj-intel64/inscount0.so" % PINBASE
 
 def start():
 	
-	parser = argparse.ArgumentParser(prog='pintool.py')
+	parser = argparse.ArgumentParser(prog='pintool2.py')
 	parser.add_argument('-e', dest='study', action='store_true', default=False, help='Study the password length, for example -e -l 40, with 40 characters')
 	parser.add_argument('-l', dest='len', type=str, nargs=1, default='10', help='Length of password (Default: 10 )')
 	parser.add_argument('-c', dest='number', type=str, default=1, help="Charset definition for brute force\n (1-Lowercase,\n2-Uppecase,\n3-Numbers,\n4-Hexadecimal,\n5-Punctuation,\n6-All)")
@@ -41,10 +51,10 @@ def start():
 		parser.print_help()
 		print ("")
                 print ("Examples:")
-                print ("  ./pintool.py -l 30 -c 1,2,3 -b _{} -s - baleful")
-		print ("  ./pintool.py -l 37 -c 4 -i CTF{ -b }_ -s - -d '=> 651' reverse400")
-		print ("  ./pintool.py -c 1,2,3 -b _ -s - -a 64 -l 28 wyvern")
-		print ("  ./pintool.py -r -l 32 -c 1,2,3 -b _{$} -s - 01f47d58806a8264cd4b2b97b9dabb4a")
+                print ("  ./pintool2.py -l 30 -c 1,2,3 -b _{} -s - baleful")
+		print ("  ./pintool2.py -l 37 -c 4 -i CTF{ -b }_ -s - -d '=> 651' reverse400")
+		print ("  ./pintool2.py -c 1,2,3 -b _ -s - -a 64 -l 28 wyvern")
+		print ("  ./pintool2.py -r -l 32 -c 1,2,3 -b _{$} -s - 01f47d58806a8264cd4b2b97b9dabb4a")
 		print ("")
 		sys.exit()
 	
