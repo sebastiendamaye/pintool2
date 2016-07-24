@@ -8,8 +8,7 @@
 #prog_author_mail = 'sebastien.damaye@gmail.com'
 
 """
-pintool2
-is an improved version of the pintool.py script written by wagiro (Eduardo García),
+pintool2 is an improved version of the pintool.py script written by wagiro (Eduardo García),
 available here (https://github.com/wagiro/pintool).
 
 This version integrates an additional reverse order option to brute force password in reverse order (starts from the end).

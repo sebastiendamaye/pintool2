@@ -1,12 +1,11 @@
-# Pintool
-Improved version of pintool.py written by wagiro (Eduardo García), available here: https://github.com/wagiro/pintool
+# Pintool2
+pintool2 is an improved version of the pintool.py script written by wagiro (Eduardo García),
+available here (https://github.com/wagiro/pintool).
 
-This version also integrates reverse order to brute force password in reverse order (starts from the end).
+This version integrates an additional reverse order option to brute force password in reverse order (starts from the end).
 
-This tool can be useful for solving some reversing challenges in CTFs events. Implements the technique described here:
-
-- http://shell-storm.org/blog/A-binary-analysis-count-me-if-you-can/
-
+This tool can be useful for solving some reversing challenges in CTFs events.
+Implements the technique described here (http://shell-storm.org/blog/A-binary-analysis-count-me-if-you-can/). 
 
 ### Configuration
 You must configure your pin PATH inside of script
@@ -23,9 +22,9 @@ INSCOUNT64 = "%s/source/tools/ManualExamples/obj-intel64/inscount0.so" % PINBASE
 
 
 ```sh
-usage: pintool.py [-h] [-e] [-l LEN] [-c NUMBER] [-b CHARACTER] [-a ARCH]
-                  [-i INITPASS] [-s SIMBOL] [-d EXPRESSION] [-r]
-                  Filename
+usage: pintool2.py [-h] [-e] [-l LEN] [-c NUMBER] [-b CHARACTER] [-a ARCH]
+                   [-i INITPASS] [-s SIMBOL] [-d EXPRESSION] [-r]
+                   Filename
 
 positional arguments:
   Filename       Program for playing with Pin Tool
@@ -47,16 +46,17 @@ optional arguments:
   -r             Start in reverse order
 
 Examples:
-  ./pintool.py -l 30 -c 1,2,3 -b _{} -s - baleful
-  ./pintool.py -l 37 -c 4 -i CTF{ -b }_ -s - -d '=> 651' reverse400
-  ./pintool.py -c 1,2,3 -b _ -s - -a 64 -l 28 wyvern
+  ./pintool2.py -l 30 -c 1,2,3 -b _{} -s - baleful
+  ./pintool2.py -l 37 -c 4 -i CTF{ -b }_ -s - -d '=> 651' reverse400
+  ./pintool2.py -c 1,2,3 -b _ -s - -a 64 -l 28 wyvern
+  ./pintool2.py -r -l 32 -c 1,2,3 -b _{$} -s - 01f47d58806a8264cd4b2b97b9dabb4a
 ```
 
 
 ### Examples
 **Baleful - picoCTF 2014**
 ```sh
-$python pintool.py -l 30 -c 1,2,3 -b _{} -s - baleful
+$ ./pintool2.py -l 30 -c 1,2,3 -b _{} -s - baleful
 p----------------------------- = 763799 difference -12 instructions
 pa---------------------------- = 763787 difference -12 instructions
 pac--------------------------- = 763775 difference -12 instructions
@@ -93,7 +93,7 @@ packers_and_vms_and_xors_oh_my
 **Reverse 400 - Hack You 2014**
 
 ```sh
-$python pintool.py -l 37 -c 4 -i CTF{ -b }_ -s - -d '=> 651' reverse400
+$ ./pintool2.py -l 37 -c 4 -i CTF{ -b }_ -s - -d '=> 651' reverse400
 CTF{c________________________________ = 1057174 difference 1300 instructions
 CTF{c9_______________________________ = 1058474 difference 1300 instructions
 CTF{c9f______________________________ = 1059774 difference 1300 instructions
@@ -130,7 +130,7 @@ CTF{c9fd99de8eb082c66c4ce4039f19c4fc}
 **wyvern 500 - CSAW CTF 2015**
 
 ```sh
-$python pintool.py -c 1,2,3 -b _ -s - -a 64 -l 28 wyvern
+$ ./pintool2.py -c 1,2,3 -b _ -s - -a 64 -l 28 wyvern
 d--------------------------- = 1505212 difference 10332 instructions
 dr-------------------------- = 1515830 difference 10618 instructions
 dr4------------------------- = 1521965 difference 6135 instructions
@@ -164,7 +164,7 @@ dr4g0n_or_p4tric1an_it5_LLVM
 
 **rev100 - th3jackers CTF 2015**
 ```sh
-$ ./pintool.py -r -l 32 -c 1,2,3 -b _{$} -s - 01f47d58806a8264cd4b2b97b9dabb4a
+$ ./pintool2.py -r -l 32 -c 1,2,3 -b _{$} -s - 01f47d58806a8264cd4b2b97b9dabb4a
 -------------------------------} = 97328 difference 29 instructions
 ------------------------------g} = 97357 difference 29 instructions
 -----------------------------Ng} = 97386 difference 29 instructions
@@ -179,6 +179,3 @@ License
 ----
 
 MIT
-
-## Contact
-For bugs please email me.
